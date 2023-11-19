@@ -1,5 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ZigZagString solution = new ZigZagString();
+        String result = solution.convert("PAYPALISHIRING", 3);
+        System.out.println(result);
     }
 }
