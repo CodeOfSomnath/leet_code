@@ -1,7 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        ZigZagString solution = new ZigZagString();
-        String result = solution.convert("PAYPALISHIRING", 3);
-        System.out.println(result);
+        String s = "PAYPALISHIRING";
+        int numRows = 4;
+        ZigZagString sol = new ZigZagString();
+        String res = sol.convert(s, numRows);
+        String result = "PAHNAPLSIIGYIR";
+        System.out.println(res);
     }
 }
