@@ -64,15 +64,74 @@
 
 public class ParseInt {
     public int myAtoi(String s) {
-        int result = 0;
-        String[] slist = s.trim().split(" ");
+        // removing extra spaces
+        s = s.trim();
 
-        try {
-            result = Integer.parseInt(slist[0]);
-        } catch (Exception e) {
-            throw e;
+        if (s.isEmpty()) {
+            return 0;
         }
 
-        return result;
+        if (s.length() == 1) {
+            try {
+                return Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+                return 0;
+            }
+
+        }
+
+        if (!Character.isDigit(s.charAt(0)) && !Character.isDigit(s.charAt(1))) {
+            return 0;
+        }
+
+        String result = "";
+
+        if (s.charAt(0) == '.') {
+            return 0;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+
+            if (s.charAt(i) == ' ') {
+                break;
+            }
+
+            if (s.charAt(i) == '.') {
+                break;
+            }
+
+            if (!Character.isDigit(s.charAt(i)) && i != 0) {
+                break;
+            }
+
+            if (!Character.isDigit(s.charAt(i))) {
+                if (s.charAt(i) != '+' && s.charAt(i) != '-') {
+                    return 0;
+                }
+            }
+
+            if (Character.isDigit(s.charAt(i))) {
+                result += s.charAt(i);
+            }
+
+        }
+
+        int i = 0;
+        try {
+            i = Integer.parseInt(result);
+        } catch (NumberFormatException e) {
+            System.err.println(e.getMessage());
+            if (s.charAt(0) == '-') {
+                i = Integer.MIN_VALUE;
+            } else {
+                i = Integer.MAX_VALUE;
+            }
+        }
+
+        if (s.charAt(0) == '-') {
+            i = -i;
+        }
+        return i;
+
     }
 }
