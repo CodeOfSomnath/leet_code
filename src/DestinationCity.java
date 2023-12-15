@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
@@ -43,16 +40,13 @@ public class DestinationCity {
 
     public String destCity(List<List<String>> paths) {
         String currentCity = paths.getFirst().getFirst();
+        HashMap<String, String> mapToDestination = new HashMap<>();
         for (var cityList : paths) {
-            if (Objects.equals(currentCity, "")) {
-                currentCity = cityList.get(1);
-            }
-            for (var cityListChecker: paths) {
-                // getFirst() is since jdk 21 so be careful
-                if (Objects.equals(cityListChecker.getFirst(), currentCity)) {
-                    currentCity = cityList.get(1);
-                }
-            }
+            mapToDestination.put(cityList.get(0), cityList.get(1));
+        }
+
+        while (mapToDestination.containsKey(currentCity)) {
+            currentCity = mapToDestination.get(currentCity);
         }
 
         return currentCity;
