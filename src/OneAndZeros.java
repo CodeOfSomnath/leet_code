@@ -52,26 +52,16 @@ import java.util.HashMap;
 
 public class OneAndZeros {
     public static Integer[] readRow(int[] row) {
-        int ones = 0, zeros = 0;
-        for (int j : row) {
-            if (j == 1) {
-                ones += 1;
-            } else {
-                zeros += 1;
-            }
-        }
+        int ones, zeros;
+        zeros = (int) Arrays.stream(row).filter(value -> value == 0).count();
+        ones = row.length - zeros;
         return new Integer[]{zeros, ones};
     }
 
     public static Integer[] readCol(int[] col) {
-        int ones = 0, zeros = 0;
-        for (int j : col) {
-            if (j == 1) {
-                ones += 1;
-            } else {
-                zeros += 1;
-            }
-        }
+        int ones, zeros;
+        zeros = (int) Arrays.stream(col).filter(value -> value == 0).count();
+        ones = col.length - zeros;
         return new Integer[]{zeros, ones};
     }
 
@@ -101,7 +91,6 @@ public class OneAndZeros {
     public static int[] getColumn(int[][] matrix, int columnIndex) {
         int numRows = matrix.length;
         int[] column = new int[numRows];
-
         for (int i = 0; i < numRows; i++) {
             column[i] = matrix[i][columnIndex];
         }
@@ -123,9 +112,7 @@ public class OneAndZeros {
             for (int j = 0; j < grid[0].length; j++) {
                 var oneAndZeroRaw = values.get("row").get(i);
                 var oneAndZeroCol = values.get("col").get(j);
-
                 result[i][j] = oneAndZeroRaw[1] + oneAndZeroCol[1] - oneAndZeroRaw[0] - oneAndZeroCol[0];
-
             }
         }
 
@@ -142,4 +129,4 @@ public class OneAndZeros {
     }
 }
 
-// it is not enough fast for submit in leet code website
+// This is enough fast for submit in leet code . Runtime - 126ms
