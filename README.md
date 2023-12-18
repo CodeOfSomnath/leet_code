@@ -2,7 +2,7 @@
 Here all leetcode problems will be implement in java
 
 # Java
-I am not a java user but I will try to do it
+I am a java user but I will try to do it
 
 # Run
 
