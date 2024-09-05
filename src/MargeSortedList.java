@@ -79,8 +79,6 @@ public class MargeSortedList {
 //        ListNode temp = first.next;
         first.next = middle;
         middle.next = last;
-//        last.next = temp;
-//        return temp;
     }
 
     static ListNode createNode(int[] arr) {
@@ -104,8 +102,7 @@ public class MargeSortedList {
 
     public static void main(String[] args) {
         MargeSortedList list = new MargeSortedList();
-//        ListNode list1 = createNode(new int[]{1,2,4});
-//        ListNode list2 = createNode(new int[]{1,3,4});
+
         ListNode list1 = new ListNode(1);
         list1.next = new ListNode(2);
         list1.next.next = new ListNode(4);
